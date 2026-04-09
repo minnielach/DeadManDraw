@@ -1,5 +1,9 @@
+#pragma once
 #include <string> 
 #include <vector>
+
+class Game;
+class Player;
 
 enum CardType {
     Cannon, Chest, Key, Sword, Hook, Oracle, Map, Mermaid, Kraken

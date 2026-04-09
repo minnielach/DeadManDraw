@@ -1,9 +1,10 @@
+#pragma once
 #include "card.h"
 
 
 class Player {
     private:
-    std::string name;
+    std::string _name;
     CardCollection playArea;
     CardCollection bank;
 
@@ -13,7 +14,7 @@ class Player {
 
     bool bust() const;
     
-    void manageBank() const;
+    void manageBank();
 
     void printBank() const;
     void printPlayArea() const;
