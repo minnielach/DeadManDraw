@@ -53,6 +53,6 @@ void Player::printPlayArea() const {
 int Player::getScore() const {
     int total = 0;
     for (Card* c : playArea) {
-        total += c->value();
+        total += c->value(); // change to only adding the highest value of suit together 
     }
 }
