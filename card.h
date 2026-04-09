@@ -1,10 +1,8 @@
 #include <string> 
 #include <vector>
-#include "player.h"
-#include "game.h"
 
 enum CardType {
-    Cannon, Chest, Key, Anchor, Sword, Hook, Oracle, Map, Mermaid, Kraken
+    Cannon, Chest, Key, Sword, Hook, Oracle, Map, Mermaid, Kraken
     };
 
 class Card {
