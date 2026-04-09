@@ -1,4 +1,6 @@
 #include <string> 
+#include "player.h"
+#include "game.h"
 
 enum CardType {
     Cannon, Chest, Key, Anchor, Sword, Hook, Oracle, Map, Mermaid, Kraken
@@ -12,7 +14,12 @@ class Card {
 
     public:
     Card(CardType type, int value);
-    CardType type() const;
+    const CardType& type() const;
     int value() const;
-    std::string toString();
+    virtual std::string str() const = 0;
+    virtual void play(Game &game, Player &player) = 0;
+    virtual void willAddToBank(Game &game, Player &player) { }
+    
 };
+
+typedef std::vector<Card*> CardCollection;
