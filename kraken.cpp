@@ -20,7 +20,7 @@ void KrakenCard:: play(Game &game, Player &player) {
             return;
         }
 
-        std::cout << player.getName() << "Draws a " << krakenCards->str() << "\n";
+        std::cout << player.getName() << " draws a " << krakenCards->str() << "\n";
 
         bool bust = player.playCard(krakenCards, game);
 
