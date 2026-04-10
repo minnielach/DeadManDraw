@@ -16,11 +16,11 @@ void SwordCard:: play(Game &game, Player &player) {
     std::vector<Card*> swordOptions = otherPlayer.getHighestValueSuit();
 
     if (swordOptions.empty()) {
-        std::cout << "No cards currently in their bank to steal.\n";
+        std::cout << "No cards in other player's bank. Play continues.\n";
     } else {
         std::cout<< "Steal the top card of any suit from the other player's bank into your play area.\n";
         for (int i=0; i < swordOptions.size(); i++) {
-            std::cout << "(" << i + 1 << ")" << swordOptions[i]->str() << "\n";
+            std::cout << "(" << i + 1 << ") " << swordOptions[i]->str() << "\n";
         }
 
         int answer;

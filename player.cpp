@@ -9,7 +9,7 @@ Player::Player() {
 }
 
 std::string Player:: getName() const {
-    return _name;
+    return this->_name;
 }
 
 CardCollection& Player:: getBank() {
@@ -122,4 +122,8 @@ std::vector<Card*> Player:: getHighestValueSuit() const{
 
     return listOfHighestValue;
 
+}
+
+CardCollection& Player :: getPlayArea() {
+    return playArea;
 }

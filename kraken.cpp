@@ -25,7 +25,7 @@ void KrakenCard:: play(Game &game, Player &player) {
         bool bust = player.playCard(krakenCards, game);
 
         if(bust) {
-            std::cout << "BUST! " << player.getName() << "loses all cards in play area!\n";
+            std::cout << "BUST! " << player.getName() << " loses all cards in play area!\n";
             return;
         }
     }

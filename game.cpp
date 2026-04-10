@@ -73,21 +73,83 @@ void Game:: shuffleDeck() {
 }
 
 void Game::playGame() {
+    std::cout << GAME_TITLE << "\n";
+    std::cout << "Starting Dead Man's Draw++\n";
     while (!deck.empty() && countTurn <= 20) {
         currentTurn();
     }
 
     std::cout << "--- Game Over ---\n";
+    std::cout << player1.getName() << "'s Bank: \n";
+    player1.printBank();
+    std:: cout << "| " << player1.getName() << "'s score: " << player1.getScore()<< "\n";
+    std::cout << player2.getName() << "'s Bank: \n";
+    player2.printBank();
+    std:: cout << "| " << player2.getName() << "'s score: " << player2.getScore() << "\n";
+    if (player1.getScore() > player2.getScore()) {
+        std:: cout << player1.getName() << " wins!";
+    } else {
+        std:: cout << player2.getName() << " wins!";
+    }
+
 }
 
 void Game::currentTurn() {
-    // print round and turn
-    // print player's name turn
-    // print player's bank 
-    // player draws card + play ability
-    // add to play area
-    // check if player has bust
-    // ask to play again if no switch turn (repeat player 2)
+    std:: cout << "--- Round " << round << ", Turn " << countTurn << " ---\n";
+
+    Player& player = getCurrentPlayer();
+
+    std:: cout << player.getName() << "'s turn\n";
+
+    player.printBank();
+
+    std:: cout << "| " << player.getName() << "'s score: " << player.getScore() << "\n";
+
+    bool play = true;
+
+    while (play) {
+        
+        Card* draw = drawCard();
+
+        if (draw == nullptr) {
+            std::cout << "No more cards in deck.\n";
+            return;
+        }
+
+        std::cout << player.getName() << " draws " << draw->str() << "\n";
+
+        bool bust = player.playCard(draw, *this);
+
+        if (bust) {
+            std:: cout << "BUST! " << player.getName() << " loses all cards in play area!\n";
+
+            CardCollection& discardCards = getDiscardPile();
+            for (Card* c : player.getPlayArea()) {
+                discardCards.push_back(c);
+            }
+
+            player.getPlayArea().clear();
+
+            play = false;
+        } else {
+            std:: cout << "\n\nDraw again? (y/n)\n"; 
+            char answer;
+            std::cin >> answer;
+
+            if (answer != 'y') {
+                player.manageBank();
+            play=false;
+            }
+        }
+    }
+
+    switchTurns();
+    countTurn++;
+
+    if (countTurn % 2 == 1) {
+        round ++;
+    }
+
 }
 
 void Game::switchTurns() {

@@ -38,7 +38,7 @@ void MapCard:: play(Game &game, Player &player) {
         std::cout << "Which card do you pick?";
 
         for (int i=0; i < discardCards.size(); i++) {
-            std::cout << "(" << i + 1 << ")" << discardCards[i]->str() << "\n";
+            std::cout << "(" << i + 1 << ") " << discardCards[i]->str() << "\n";
         }
 
         int answer;

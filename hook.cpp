@@ -14,7 +14,7 @@ void HookCard:: play(Game &game, Player &player) {
     std::vector<Card*> hookOptions = player.getHighestValueSuit();
 
     if (hookOptions.empty()) {
-        std::cout << "No cards currently in the bank.\n";
+        std::cout << "No cards in other player's bank. Play continues.\n";
     } else {
         std::cout<< "Select a highest value card from any of the suits in your bank.\n";
         for (int i=0; i < hookOptions.size(); i++) {

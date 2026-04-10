@@ -31,4 +31,5 @@ class Player {
 
     std::vector<Card*> getHighestValueSuit() const;
 
+    CardCollection &getPlayArea();
 };

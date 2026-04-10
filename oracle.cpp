@@ -15,6 +15,6 @@ void OracleCard:: play(Game &game, Player &player) {
     if (nextCard == nullptr) {
         std::cout << "Deck is empty\n";
     } else {
-        std:: cout << nextCard->str() << "is the next card in the deck.\n";
+        std:: cout << nextCard->str() << " is the next card in the deck.\n";
     }
 }
