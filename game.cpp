@@ -25,7 +25,10 @@ Game::Game() {
 
 }
 
+// creates all cards and adds them to the deck
 void Game::createDeck() {
+
+    // for loop for each card type and is added to the deck
     for (int i = 2; i < 8; i++) {
         deck.push_back(new CannonCard(i));
     }
@@ -63,6 +66,7 @@ void Game::createDeck() {
     }
 }
 
+// randomly shuffles the cards in the deck using random number generator
 void Game:: shuffleDeck() {
 
     std::random_device rd; 
@@ -72,13 +76,16 @@ void Game:: shuffleDeck() {
 
 }
 
+// starts the game
 void Game::playGame() {
     std::cout << GAME_TITLE << "\n";
     std::cout << "Starting Dead Man's Draw++\n";
+    // continues to plau until 20 turns have passed or deck is empty
     while (!deck.empty() && countTurn <= 20) {
         currentTurn();
     }
 
+    // end of game 
     std::cout << "--- Game Over ---\n";
     std::cout << player1.getName() << "'s Bank: \n";
     player1.printBank();
@@ -94,7 +101,10 @@ void Game::playGame() {
 
 }
 
+// ensures that a player's turn follows the proper format and rules.
 void Game::currentTurn() {
+
+    //prints the beginning for each round
     std:: cout << "--- Round " << round << ", Turn " << countTurn << " ---\n";
 
     Player& player = getCurrentPlayer();
@@ -105,6 +115,7 @@ void Game::currentTurn() {
 
     std:: cout << "| " << player.getName() << "'s score: " << player.getScore() << "\n";
 
+    // boolean added so that a player's turn will end when busted or does not want to draw
     bool play = true;
 
     while (play) {
@@ -120,18 +131,22 @@ void Game::currentTurn() {
 
         bool bust = player.playCard(draw, *this);
 
+        // checks if player has busted once a card is drawn
         if (bust) {
             std:: cout << "BUST! " << player.getName() << " loses all cards in play area!\n";
 
+            // discards cards into discard pile if busted
             CardCollection& discardCards = getDiscardPile();
             for (Card* c : player.getPlayArea()) {
                 discardCards.push_back(c);
             }
 
+            // clears their play area
             player.getPlayArea().clear();
 
             play = false;
         } else {
+            // asks if player wants to draw again
             std:: cout << "\n\nDraw again? (y/n)\n"; 
             char answer;
             std::cin >> answer;
@@ -143,15 +158,18 @@ void Game::currentTurn() {
         }
     }
 
+    // switches turn and turn number goes up by one
     switchTurns();
     countTurn++;
 
+    // once player 1 and player 2 has played then round goes up by one
     if (countTurn % 2 == 1) {
         round ++;
     }
 
 }
 
+// switches the player's turn 
 void Game::switchTurns() {
     if (player1Turn) {
         player1Turn = false;
@@ -160,18 +178,22 @@ void Game::switchTurns() {
     }
 }
 
+// returns player 1 information
 Player& Game:: getPlayer1() {
     return player1;
 }
 
+// returns 2 information
 Player& Game:: getPlayer2() {
     return player2;
 }
 
+// returns the discard pile
 CardCollection& Game:: getDiscardPile() {
     return discardPile;
 }
 
+// return the player currently playing
 Player& Game:: getCurrentPlayer() {
     if (player1Turn) {
         return player1;
@@ -180,6 +202,7 @@ Player& Game:: getCurrentPlayer() {
     }
 }
 
+// return the player that is not currently playing
 Player& Game::getOtherPlayer() {
     if (player1Turn) {
         return player2;
@@ -188,6 +211,7 @@ Player& Game::getOtherPlayer() {
     }
 }
 
+// looks at the first card in the deck without touching it
 Card* Game:: peek() {
     if (deck.empty()) {
         return nullptr;
@@ -196,6 +220,7 @@ Card* Game:: peek() {
     return deck.back();
 }
 
+// allows player to draw the first card in the deck
 Card* Game:: drawCard() {
     if (deck.empty()) {
         return nullptr;
