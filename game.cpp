@@ -80,3 +80,13 @@ Card* :: Game:: peek() {
 
     return deck.back();
 }
+
+Card* :: Game:: drawCard() {
+    if (deck.empty()) {
+        return nullptr;
+    } else {
+        Card* drawnCard = deck.back();
+        deck.pop_back();
+        return drawnCard;
+    }
+}

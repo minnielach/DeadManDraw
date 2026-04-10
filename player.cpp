@@ -8,6 +8,10 @@ Player::Player() {
 
 }
 
+std::string Player:: getName() const {
+    return _name;
+}
+
 CardCollection& Player:: getBank() {
     return bank;
 }

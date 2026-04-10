@@ -16,6 +16,8 @@ class Player {
 
     CardCollection& getBank();
 
+    std::string getName() const;
+
     bool bust() const;
     
     void manageBank();

@@ -34,4 +34,6 @@ class Game {
     CardCollection& getDiscardPile();
 
     Card* peek();
+
+    Card* drawCard();
 };
