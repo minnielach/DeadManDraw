@@ -1,9 +1,10 @@
 #pragma once
 #include "card.h"
+#include <iostream>
 
-class HookCard : public Card {
+class SwordCard : public Card {
     public:
-    HookCard(int value);
+    SwordCard(int value);
 
     std::string str() const override;
     void play(Game &game, Player &player) override;

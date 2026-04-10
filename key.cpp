@@ -1,7 +1,7 @@
 #include "key.h"
 #include <iostream>
 
-KeyCard::KeyCard(int value) : Card(Chest, value) {
+KeyCard::KeyCard(int value) : Card(Key, value) {
 
 }
 

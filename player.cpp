@@ -8,6 +8,10 @@ Player::Player() {
 
 }
 
+CardCollection& Player:: getBank() {
+    return bank;
+}
+
 bool Player::playCard(Card *card, Game& game) {
     playArea.push_back(card);
 

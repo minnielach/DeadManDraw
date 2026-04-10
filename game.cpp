@@ -72,3 +72,11 @@ Player& Game::getOtherPlayer() {
         return player1;
     }
 }
+
+Card* :: Game:: peek() {
+    if (deck.empty()) {
+        return nullptr;
+    }
+
+    return deck.back();
+}

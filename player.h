@@ -14,6 +14,8 @@ class Player {
     Player();
     bool playCard(Card *card, Game& game);
 
+    CardCollection& getBank();
+
     bool bust() const;
     
     void manageBank();

@@ -32,4 +32,6 @@ class Game {
     Player& getPlayer2();
 
     CardCollection& getDiscardPile();
+
+    Card* peek();
 };
