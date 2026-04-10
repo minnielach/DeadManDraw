@@ -1,5 +1,19 @@
 #include "game.h"
+#include "player.h"
+#include "card.h"
+#include "cannon.h"
+#include "chest.h"
+#include "key.h"
+#include "hook.h"
+#include "sword.h"
+#include "kraken.h"
+#include "mermaid.h"
+#include "oracle.h"
+#include "map.h"
 #include <iostream>
+#include "game_title.h"
+#include <algorithm>
+#include <random>
 
 Game::Game() {
     player1Turn = true;
@@ -12,11 +26,50 @@ Game::Game() {
 }
 
 void Game::createDeck() {
-    // add the suits to deck once they are made
+    for (int i = 2; i < 8; i++) {
+        deck.push_back(new CannonCard(i));
+    }
+
+    for (int i = 2; i < 8; i++) {
+        deck.push_back(new ChestCard(i));
+    }
+
+    for (int i = 2; i < 8; i++) {
+        deck.push_back(new KeyCard(i));
+    }
+
+    for (int i = 2; i < 8; i++) {
+        deck.push_back(new SwordCard(i));
+    }
+
+    for (int i = 2; i < 8; i++) {
+        deck.push_back(new HookCard(i));
+    }
+
+    for (int i = 2; i < 8; i++) {
+        deck.push_back(new OracleCard(i));
+    }
+
+    for (int i = 2; i < 8; i++) {
+        deck.push_back(new MapCard(i));
+    }
+
+    for (int i = 2; i < 8; i++) {
+        deck.push_back(new KrakenCard(i));
+    }
+
+    for (int i = 4; i < 10; i++) {
+        deck.push_back(new MermaidCard(i));
+    }
 }
 
-void Game::shuffleDeck() {
-    // use shuffle function once create deck is done
+void Game:: shuffleDeck() {
+
+    std::random_device rd; 
+    std::mt19937 g(rd()); 
+
+    std::shuffle(deck.begin(), deck.end(), g);
+
 }
 
 void Game::playGame() {
@@ -73,7 +126,7 @@ Player& Game::getOtherPlayer() {
     }
 }
 
-Card* :: Game:: peek() {
+Card* Game:: peek() {
     if (deck.empty()) {
         return nullptr;
     }
@@ -81,7 +134,7 @@ Card* :: Game:: peek() {
     return deck.back();
 }
 
-Card* :: Game:: drawCard() {
+Card* Game:: drawCard() {
     if (deck.empty()) {
         return nullptr;
     } else {
