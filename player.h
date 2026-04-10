@@ -1,5 +1,7 @@
 #pragma once
 #include "card.h"
+#include <iostream>
+#include <vector>
 
 
 class Player {
@@ -20,5 +22,9 @@ class Player {
     void printPlayArea() const;
 
     int getScore() const;
+
+    Card* removeHighestValueCard();
+
+    std::vector<Card*> getHighestValueSuit() const;
 
 };

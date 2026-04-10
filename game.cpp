@@ -56,3 +56,19 @@ Player& Game:: getPlayer2() {
 CardCollection& Game:: getDiscardPile() {
     return discardPile;
 }
+
+Player& Game:: getCurrentPlayer() {
+    if (player1Turn) {
+        return player1;
+    } else {
+        return player2;
+    }
+}
+
+Player& Game::getOtherPlayer() {
+    if (player1Turn) {
+        return player2;
+    } else {
+        return player1;
+    }
+}

@@ -25,6 +25,9 @@ class Game {
     void currentTurn();
     void switchTurns();
 
+    Player& getCurrentPlayer();
+    Player& getOtherPlayer();
+
     Player& getPlayer1();
     Player& getPlayer2();
 
